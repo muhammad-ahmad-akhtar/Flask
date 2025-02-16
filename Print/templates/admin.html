@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1>Admin Pannel</h1>
+    <ul><br><br><hr><br><br>
+        {% for user in USERS %}
+            <li>User's email: {{ user["email"] }} and Password of: {{ user["password"] }}.</li><br><br><hr><br><br>
+        {% endfor %}
+    </ul>
+</body>
+</html>

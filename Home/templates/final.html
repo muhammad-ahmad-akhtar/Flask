@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final</title>
+</head>
+<body>
+    <h2>Final Report</h2>
+    {{date}}<br><br>
+    {{Sub_Meters_Units}}<br><br>
+    {{unit_cost}}<br><br>
+    {{Sub_Meters_Bill}}<br><br>
+    <h4><a href="/">Logout</a></h4>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Records Overview</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body { padding-top: 20px; }
+    h1, h2 { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Final Records Overview</h1>
+
+    <!-- Flow Data Section -->
+    <h2>Flow Data</h2>
+    <ul class="list-group mb-4">
+      <li class="list-group-item"><strong>Date:</strong> {{ flow_data.DATE }}</li>
+      <li class="list-group-item"><strong>Unit Cost:</strong> {{ flow_data.unit_cost }}</li>
+      <li class="list-group-item"><strong>Sub Meter Readings:</strong> {{ flow_data.sub_meter_readings }}</li>
+      <li class="list-group-item"><strong>Electric Usage:</strong> {{ flow_data.electric_usage }}</li>
+      <li class="list-group-item"><strong>Gas Reading:</strong> {{ flow_data.Gas_reading }}</li>
+    </ul>
+
+    <!-- Rent Houses Section -->
+    <h2>Rent Houses</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Members Count</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for house in rent_houses %}
+        <tr>
+          <td>{{ house.id }}</td>
+          <td>{{ house.name }}</td>
+          <td>{{ house.members_count }}</td>
+          <td>{{ house.comments }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Monthly Records Section -->
+    <h2>Monthly Records</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Rent House ID</th>
+          <th>Month</th>
+          <th>Gas Bill</th>
+          <th>Water Bill</th>
+          <th>Electric Bill</th>
+          <th>Maintenance Charges</th>
+          <th>Surplus Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in monthly_records %}
+        <tr>
+          <td>{{ record.id }}</td>
+          <td>{{ record.rent_house_id }}</td>
+          <td>{{ record.month }}</td>
+          <td>{{ record.gas_bill }}</td>
+          <td>{{ record.water_bill }}</td>
+          <td>{{ record.electric_bill }}</td>
+          <td>{{ record.maintenance_charges }}</td>
+          <td>{{ record.surplus_amount }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Electric Sub Meters Section -->
+    <h2>Electric Sub Meters</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Rent House ID</th>
+          <th>Month</th>
+          <th>Cumulative Reading</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sub in electric_subs %}
+        <tr>
+          <td>{{ sub.id }}</td>
+          <td>{{ sub.rent_house_id }}</td>
+          <td>{{ sub.month }}</td>
+          <td>{{ sub.cumulative_reading }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Shared Gas Meter Section -->
+    <h2>Shared Gas Meter</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Month</th>
+          <th>Cumulative Reading</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gas in shared_gas %}
+        <tr>
+          <td>{{ gas.id }}</td>
+          <td>{{ gas.month }}</td>
+          <td>{{ gas.cumulative_reading }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Shared Water Pump Meter Section -->
+    <h2>Shared Water Pump Meter</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Month</th>
+          <th>Cumulative Reading</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for water in shared_water %}
+        <tr>
+          <td>{{ water.id }}</td>
+          <td>{{ water.month }}</td>
+          <td>{{ water.cumulative_reading }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
